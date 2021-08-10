@@ -18,14 +18,13 @@ public class UsuarioDAO {
     private static final String SELECT_SQL = "SELECT * FROM desafiopitang.usuario;";
     private static final String SELECT_BY_EMAIL_SQL = "SELECT * FROM desafiopitang.usuario WHERE email= ?";
     private static final String INSERT_SQL = "INSERT INTO desafiopitang.usuario (nome, email, senha) VALUES ( ?, ? , ?)";
-    private static final String UPTADE_SQL = "UPDATE usuario SET nome= ? , email= ?, senha= ? WHERE id = ?";
+    private static final String UPTADE_SQL = "UPDATE desafiopitang.usuario SET nome= ? , email= ?, senha= ? WHERE id = ?";
     private static final String DELETE_SQL = "DELETE FROM desafiopitang.usuario WHERE id = ?";
 
     //Listar
     public static List<Usuario> buscarUsuarios(Usuario u) {
 
-        List<Usuario> usuario = new ArrayList<Usuario>();
-        
+        List<Usuario> usuario = new ArrayList<>();
 
 //Database Connect
         try {
@@ -97,7 +96,7 @@ public class UsuarioDAO {
 
     //Inserir
     public static void insertUsuarios(Usuario u) {
-       
+
         try {
             Driver driver = new Driver();
             DriverManager.registerDriver(driver);
@@ -112,18 +111,17 @@ public class UsuarioDAO {
 
             stmt.execute();
             stmt.close();
-            
 
         } catch (SQLException e) {
             e.printStackTrace();
 
         }
-       
+
     }
 
     //Atualizar
     public static void atualizarUsuarios(Usuario usuario) {
-     
+
         try {
             Driver driver = new Driver();
             DriverManager.registerDriver(driver);
@@ -140,8 +138,6 @@ public class UsuarioDAO {
             stmt.execute();
             stmt.close();
 
-           
-      
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -149,7 +145,7 @@ public class UsuarioDAO {
 
     //Deletar
     public static void deletarUsuarios(Usuario u) {
-       
+
         try {
             Driver driver = new Driver();
             DriverManager.registerDriver(driver);
@@ -161,18 +157,18 @@ public class UsuarioDAO {
             stmt.setInt(1, u.getId());
             stmt.execute();
             stmt.close();
-            
-           
+
         } catch (SQLException e) {
             e.printStackTrace();
 
-}  
+        }
     }
-    
-    
-    public  Usuario buscarporId (Integer id){
-        Usuario usuRetorno = null;
-        try{
+
+    public static Usuario buscarporId(Integer id) {
+
+        Usuario usuRetorno = new Usuario ();
+        try {
+
             Driver driver = new Driver();
             DriverManager.registerDriver(driver);
             Connection c = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -180,25 +176,20 @@ public class UsuarioDAO {
             PreparedStatement stmt = c.prepareStatement(SELECT_SQL);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
-            if (rs.next()){
+
+            if (rs.next()) {
                 usuRetorno = new Usuario();
                 usuRetorno.setId(rs.getInt("id"));
                 usuRetorno.setNome(rs.getString("nome"));
                 usuRetorno.setEmail(rs.getString("email"));
                 usuRetorno.setSenha(rs.getString("senha"));
-                
-                
-                
+
             }
-                
-        } catch(SQLException e){
-            
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        
         return usuRetorno;
     }
 
 }
-
-   
-

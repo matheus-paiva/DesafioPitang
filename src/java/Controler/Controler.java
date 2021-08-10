@@ -25,7 +25,7 @@ public class Controler extends HttpServlet {
         UsuarioDAO usuDAO = new UsuarioDAO();
         
         if (acao != null && acao.equals("lis")){
-        List<Usuario> usuarios = usuDAO.buscarUsuarios(u);
+        List<Usuario> usuarios = UsuarioDAO.buscarUsuarios(u);
         
         request.setAttribute("usuarios",usuarios);
         RequestDispatcher saida = request.getRequestDispatcher("lista_usuario.jsp");
@@ -38,10 +38,10 @@ public class Controler extends HttpServlet {
             response.sendRedirect("Controler?acao=lis");
             
             
-        }else if (acao != null && acao.equals("alt")){
+        }else if (acao !=null && acao.equals("alt")){
             
             String id =request.getParameter("id");
-            Usuario usuario = usuDAO.buscarporId(Integer.parseInt(id));
+            Usuario usuario = UsuarioDAO.buscarporId(Integer.parseInt(id));
             request.setAttribute("usuario",usuario);
             request.getRequestDispatcher("AtualizarCadastro.jsp").forward(request, response);
             
