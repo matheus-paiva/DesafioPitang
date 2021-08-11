@@ -15,8 +15,9 @@ public class UsuarioDAO {
     private static final String DB_URL = "jdbc:mysql://localhost:3306";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
-    private static final String SELECT_SQL = "SELECT * FROM desafiopitang.usuario;";
+    private static final String SELECT_SQL = "SELECT * FROM desafiopitang.usuario ;";
     private static final String SELECT_BY_EMAIL_SQL = "SELECT * FROM desafiopitang.usuario WHERE email= ?";
+    private static final String SELECT_BY_ID_SQL = "SELECT * FROM desfiopitang.usuario WHERE id= ?";
     private static final String INSERT_SQL = "INSERT INTO desafiopitang.usuario (nome, email, senha) VALUES ( ?, ? , ?)";
     private static final String UPTADE_SQL = "UPDATE desafiopitang.usuario SET nome= ? , email= ?, senha= ? WHERE id = ?";
     private static final String DELETE_SQL = "DELETE FROM desafiopitang.usuario WHERE id = ?";
@@ -164,32 +165,39 @@ public class UsuarioDAO {
         }
     }
 
-    public static Usuario buscarporId(Integer id) {
+    public static Usuario buscarporId(int id) {
+        Usuario usuRetorno = new Usuario();
 
-        Usuario usuRetorno = new Usuario ();
         try {
 
             Driver driver = new Driver();
             DriverManager.registerDriver(driver);
             Connection c = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
-            PreparedStatement stmt = c.prepareStatement(SELECT_SQL);
+            PreparedStatement stmt = c.prepareStatement(SELECT_BY_ID_SQL);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
+
+                String nome = rs.getString("nome");
+                String email = rs.getString("email");
+                String senha = rs.getString("senha");
+
                 usuRetorno = new Usuario();
-                usuRetorno.setId(rs.getInt("id"));
-                usuRetorno.setNome(rs.getString("nome"));
-                usuRetorno.setEmail(rs.getString("email"));
-                usuRetorno.setSenha(rs.getString("senha"));
+                usuRetorno.setId(id);
+                usuRetorno.setNome(nome);
+                usuRetorno.setEmail(email);
+                usuRetorno.setSenha(senha);
 
             }
+            
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return usuRetorno;
-    }
 
+        return usuRetorno;
+
+    }
 }

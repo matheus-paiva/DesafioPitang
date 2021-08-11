@@ -22,5 +22,8 @@
             </p>
             <input type="submit" value="Cadastrar"/>
         </form>
+        <p>
+            <a href="index.jsp"> Voltar para página inicial </a>
+        </p>
     </body>
 </html>

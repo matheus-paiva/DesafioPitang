@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 
 public class Usuario {
 
@@ -7,6 +8,7 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private ArrayList<Telefone> listaTel = new ArrayList<>() ;
 
     public int getId() {
         return id;
@@ -39,6 +41,15 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
     
-  
+    public ArrayList<Telefone> getListaTel() {
+        return listaTel;
+    }
+
+    public void setListaTel(ArrayList<Telefone> listaTel) {
+        this.listaTel = listaTel;
+    }
+    
+    
 }

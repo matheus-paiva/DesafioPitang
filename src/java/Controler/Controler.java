@@ -15,7 +15,7 @@ import model.Usuario;
 
 @WebServlet(name="Controler", urlPatterns={"/Controler"})
 public class Controler extends HttpServlet {
-  
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
@@ -34,17 +34,15 @@ public class Controler extends HttpServlet {
         }else if(acao !=null && acao.equals("ex")){
             String id = request.getParameter("id");
             u.setId(Integer.parseInt(id));
-            UsuarioDAO.deletarUsuarios(u);
+            usuDAO.deletarUsuarios(u);
             response.sendRedirect("Controler?acao=lis");
             
             
-        }else if (acao !=null && acao.equals("alt")){
-            
+        }else if (acao !=null && acao.equals("alt")){ 
             String id =request.getParameter("id");
-            Usuario usuario = UsuarioDAO.buscarporId(Integer.parseInt(id));
+            Usuario usuario = usuDAO.buscarporId(Integer.parseInt(id));
             request.setAttribute("usuario",usuario);
             request.getRequestDispatcher("AtualizarCadastro.jsp").forward(request, response);
-            
             
         }
         
@@ -72,10 +70,5 @@ public class Controler extends HttpServlet {
         
         
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

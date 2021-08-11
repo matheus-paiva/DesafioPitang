@@ -15,14 +15,16 @@
     </head>
     <body>
         <%
-            String snome = request.getParameter("nome");
-            String semail = request.getParameter("email");
-            String ssenha = request.getParameter("senha");
-
+            
+            String sNome = request.getParameter("nome");
+            String sEmail = request.getParameter("email");
+            String sSenha = request.getParameter("senha");
+           
+  
             Usuario usu = new Usuario();
-            usu.setNome(snome);
-            usu.setEmail(semail);
-            usu.setSenha(ssenha);
+            usu.setNome(sNome);
+            usu.setEmail(sEmail);
+            usu.setSenha(sSenha);
 
             UsuarioDAO usuDAO = new UsuarioDAO();
             usuDAO.insertUsuarios(usu);
