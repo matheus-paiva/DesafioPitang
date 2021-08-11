@@ -39,6 +39,7 @@ public class Controler extends HttpServlet {
             
             
         }else if (acao !=null && acao.equals("alt")){ 
+    
             String id =request.getParameter("id");
             Usuario usuario = usuDAO.buscarporId(Integer.parseInt(id));
             request.setAttribute("usuario",usuario);

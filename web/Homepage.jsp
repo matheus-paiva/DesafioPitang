@@ -28,7 +28,7 @@
         <form method="POST" action="AdicionarTelefone">
             <p>
                 <label>DDD:</label> 
-                <input type="text" name="ddd" maxlength="3" required/>
+                <input size="1" type="text" name="ddd" maxlength="3" required/>
                 <label>Número:</label>
                 <input type="tel" name="numero" maxlength="9" required/>
                 <label>Tipo:</label>

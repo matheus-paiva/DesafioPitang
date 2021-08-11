@@ -16,7 +16,7 @@
         <form action="Controler" method="POST"> 
             <p>
                 <label>ID:</label>
-                <input  name="id" value="<%usuario.getId();%>" required>
+                <input size="1"  name="id" value="<%usuario.getId();%>" required>
             </p>
             <p>
                 <label>Nome:</label>
