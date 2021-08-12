@@ -17,7 +17,7 @@ public class UsuarioDAO {
     private static final String DB_PASSWORD = "";
     private static final String SELECT_SQL = "SELECT * FROM desafiopitang.usuario ;";
     private static final String SELECT_BY_EMAIL_SQL = "SELECT * FROM desafiopitang.usuario WHERE email= ?";
-    private static final String SELECT_BY_ID_SQL = "SELECT * FROM desfiopitang.usuario WHERE id= ?";
+    private static final String SELECT_BY_ID_SQL = "SELECT * FROM desafiopitang.usuario WHERE id= ?";
     private static final String INSERT_SQL = "INSERT INTO desafiopitang.usuario (nome, email, senha) VALUES ( ?, ? , ?)";
     private static final String UPTADE_SQL = "UPDATE desafiopitang.usuario SET nome= ? , email= ?, senha= ? WHERE id = ?";
     private static final String DELETE_SQL = "DELETE FROM desafiopitang.usuario WHERE id = ?";

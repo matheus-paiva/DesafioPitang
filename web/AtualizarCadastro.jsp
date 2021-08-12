@@ -9,26 +9,26 @@
     <body>
         <%
             Usuario usuario = (Usuario) request.getAttribute("usuario");
-           
-
+            
+     
         %>
         <h1>Editar Cadastro</h1>
         <form action="Controler" method="POST"> 
             <p>
                 <label>ID:</label>
-                <input size="1"  name="id" value="<%usuario.getId();%>" required>
+                <input size="1"  name="id" value="<%=usuario.getId()%>" required>
             </p>
             <p>
                 <label>Nome:</label>
-                <input  name="nome" required value="<%usuario.getNome();%>">
+                <input  name="nome" required value="<%=usuario.getNome()%>">
             </p>
             <p>
                 <label>E-mail:</label>
-                <input type="email" name="email" required value="<%usuario.getEmail();%>">
+                <input type="email" name="email" required value="<%=usuario.getEmail()%>">
             </p>
             <p>
                 <label>Senha:</label>
-                <input type="password" name="senha" minlength="4" required value="<%usuario.getSenha();%>">
+                <input type="password" name="senha" minlength="4" required value="<%=usuario.getSenha()%>">
             </p>
             <input type="submit" value="Salvar"> 
         </form> 
